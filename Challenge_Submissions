@@ -1,0 +1,359 @@
+#1
+
+import math
+import os
+import random
+import re
+import sys
+
+if __name__ == '__main__':
+    n=int(input())
+    if n%2!=0:
+        print("Weird")
+    elif n in range(2,6):
+        print("Not Weird")
+    elif n in range(6,21):
+        print("Weird")
+    else:
+        print("Not Weird")
+
+#2
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    print(a+b)
+    print(a-b)
+    print(a*b)
+    
+#3
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    print(a//b)
+    print(a/b)
+
+#4
+if __name__ == '__main__':
+    n = int(input())
+    for i in range(0,n):
+        print(i*i)
+
+#5
+def is_leap(year):
+    leap = False
+    
+    if year%4==0:
+        leap = True
+        if year%100==0 and year%400!=0:
+            leap=False
+    
+    return leap
+
+#6
+if __name__ == '__main__':
+    n = int(input())
+    for i in range(1,n+1):
+        print(i,end='')
+
+#7
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    arr.sort(reverse=True)
+    num=arr[0]
+    for i in range(len(arr)):
+        if arr[i]==num:
+            continue
+        print(arr[i])
+        break
+        
+#8
+if __name__ == '__main__':
+    records=[]
+    temp1=[]
+    temp2=[]
+    for i in range(int(input())):
+        name = input()
+        score = float(input())
+        records.append([name,score])
+    for i in records:
+        temp1.append(i[1])
+        
+    temp1.sort()
+    first=temp1[0]
+    for i in range(len(temp1)):
+        if temp1[i]==first:
+            continue
+        sec_low=temp1[i]
+        break
+    
+    for i in records:
+        if i[1]==sec_low:
+            temp2.append(i[0])
+    temp2.sort()
+    for i in temp2:
+        print(i)
+    
+#9
+import math
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+    for x in student_marks.keys():
+        if x==query_name:
+            print("{:.2f}".format(math.fsum(student_marks[x])/3,2))
+            break
+
+#10
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+    sol=[[i,j,k] for i in range(0,x+1) for j in range(0,y+1) for k in range(0,z+1) if i+j+k!=n] 
+    print(sol)
+
+#11
+if __name__ == '__main__':
+    arr=[]
+    n = int(input())
+    for _ in range(0,n):
+        commands=[]
+        commands=[x for x in input().split()] 
+        if commands[0]=='insert':
+            arr.insert(int(commands[1]),int(commands[2]))
+            continue
+        if commands[0]=='print':
+            print(arr)
+        if commands[0]=='remove':
+            arr.remove(int(commands[1]))
+        if commands[0]=='append':
+            arr.append(int(commands[1]))
+        if commands[0]=='sort':
+            arr.sort()
+        if commands[0]=='pop':
+            arr.pop()
+        if commands[0]=='reverse':
+            arr.reverse()
+            
+
+#12
+if __name__ == '__main__':
+    n = int(input())
+    integer_list = tuple(map(int, input().split()))
+    print(hash(integer_list))
+    
+#13
+def swap_case(s):
+    return s.swapcase()
+
+
+#14
+def split_and_join(line):
+    a=line.split(' ')
+    return '-'.join(a)
+
+if __name__ == '__main__':
+    line = input()
+    result = split_and_join(line)
+    print(result)
+
+#15
+def split_and_join(line):
+    a=line.split(' ')
+    return '-'.join(a)
+
+if __name__ == '__main__':
+    line = input()
+    result = split_and_join(line)
+    print(result)
+
+#16
+def print_full_name(first, last):
+    # Write your code here
+    print("Hello "+first+" "+last+'! You just delved into python.')
+
+#17
+def mutate_string(string, position, character):
+    temp=list(string)
+    temp[position]=character
+    return ''.join(temp)
+    
+#18
+def count_substring(string, sub_string):
+    c=0
+    for i in range(0,len(string)):
+        if string[i]==sub_string[0]:
+           c+= string[i:i+len(sub_string)].count(sub_string)
+    return c
+
+#19
+if __name__ == '__main__':
+    s = input()
+    for var in s:
+        if var.isalnum():
+            print(True)
+            break
+    else: print(False)
+    for var in s:
+        if var.isalpha():
+            print(True)
+            break
+    else: print(False)
+    for var in s:
+        if var.isdigit():
+            print(True)
+            break
+    else: print(False)
+    for var in s:
+        if var.islower():
+            print(True)
+            break
+    else: print(False)
+    for var in s:
+        if var.isupper():
+            print(True)
+            break
+    else: print(False)
+
+#20
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+#21
+def wrap(string, max_width):
+    temp=''
+    for i in range(0,len(string),max_width):
+        temp+=string[i:i+max_width]+'\n'
+    return temp
+
+
+#22
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n,m=input().split()
+c='|'
+v='.'
+
+n=int(n)
+m=int(m)
+j=n//2-1
+for i in range(n):
+    if i==n//2:
+        print('WELCOME'.center(m,'-'))
+    else:
+        if i<n/2:    
+            print(((v+c+v)*(2*i+1)).center(m,'-'))
+        else:
+            print(((v+c+v)*(2*j+1)).center(m,'-'))
+            j=j-1
+
+#23
+def print_formatted(number):
+
+    width = len("{0:b}".format(number))
+
+    for i in range(1, number + 1):
+        print("{0:{w}d} {0:{w}o} {0:{w}X} {0:{w}b}".format(i, w = width))
+
+#24
+def print_rangoli(size):
+    # your code goes here
+    import string
+    design = string.ascii_lowercase
+    L = []
+    for i in range(n):
+        s = "-".join(design[i:n])
+        L.append((s[::-1]+s[1:]).center(4*n-3, "-"))
+        
+    print('\n'.join(L[:0:-1]+L))
+
+#25
+# Complete the solve function below.
+def solve(s):
+    temp=s.split(' ')
+    string=''
+    for word in temp:
+        string+=word.capitalize()+' '
+    return string
+
+#26
+def minion_game(string):
+    player1 = 0;
+    player2 = 0;
+    str_len = len(string)
+    for i in range(str_len):
+        if s[i] in "AEIOU":
+            player1 += (str_len)-i
+        else :
+            player2 += (str_len)-i
+    
+    if player1 > player2:
+        print("Kevin", player1)
+    elif player1 < player2:
+        print("Stuart",player2)
+    elif player1 == player2:
+        print("Draw")
+    else :
+        print("Draw")
+
+#27
+def merge_the_tools(string, k):
+    # your code goes here
+    for i in range(0,len(string),k):
+        temp=string[i:i+k]
+        res=[]
+        for j in temp:
+            if j not in res:
+                res.append(j)
+        print(''.join(res))
+
+#28
+from collections import defaultdict
+
+
+n, m = map(int, input().split())
+d = defaultdict(list)
+for i in range(1, n + 1):
+    d[input()].append(str(i))
+for i in range(m):
+    print(' '.join(d[input()]) or -1)
+
+#29
+from itertools import product
+a = map(int, input().split())
+b = map(int, input().split())
+
+print(*product(a, b))
+
+#30
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+N, headers, total = int(input()), list(input().split()), 0
+for _ in range(N):
+    total += int(list(input().split())[headers.index('MARKS')])
+print(total/N)
